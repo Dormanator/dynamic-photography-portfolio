@@ -1,8 +1,8 @@
 <% include ../partials/header %>
 
-<div class="container">
+<div class="container main">
     <div class="row">
-        <div class="col-12 text-center">
+        <div class="col-12 text-center mb-3">
             <h1><%= photo.title %></h1>
         </div>
     </div>
@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="row justify-content-center mt-3">
-        <div class="col-8">
+        <div class="col-lg-10 col-12">
             <a href="/photos" class="return-link">&lsaquo; Go back</a>
             <div class="float-right">
                 <p><em><%= photo.date.toDateString() %></em></p>

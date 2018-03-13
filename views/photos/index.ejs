@@ -1,18 +1,20 @@
 <% include ../partials/header %>
-<div class="col-sm-12 text-center">
-    <p class="filters">
-        <a href="/photos">all</a>
-        /
-        <a href="/photos/tag/people">people</a>
-        /
-        <a href="/photos/tag/places">places</a>
-        /
-        <a href="/photos/tag/things">things</a>
-        /
-        <a href="/photos/tag/animals">animals</a>
-    </p>
-</div>
-<div class="container">
+<div class="container main">
+    <div class="row mt-5">
+        <div class="col-sm-12 text-center">
+            <p class="filters">
+                <a href="/photos">all</a>
+                /
+                <a href="/photos/tag/people">people</a>
+                /
+                <a href="/photos/tag/places">places</a>
+                /
+                <a href="/photos/tag/things">things</a>
+                /
+                <a href="/photos/tag/animals">animals</a>
+            </p>
+        </div>
+    </div>
     <div class="row mt-5">
     <% photos.forEach( (photo) => { %>
         <div class="col-xl-3 col-md-4 col-sm-6 d-flex justify-content-center align-items-center mb-5">
