@@ -15,10 +15,9 @@ require("dotenv").config();
 
 // IMPORT IN ROUTES
 const photoRoutes = require("./routes/photos"),
-  tagRoutes = require("./routes/tags");
-(userRoutes = require("./routes/users")),
-  (contactRoutes = require("./routes/contact")),
-  (indexRoutes = require("./routes/index"));
+  userRoutes = require("./routes/users"),
+  contactRoutes = require("./routes/contact"),
+  indexRoutes = require("./routes/index");
 
 // APP CONFIG
 mongoose.connect(process.env.DATABASEURL);
@@ -57,7 +56,6 @@ app.use((req, res, next) => {
 
 // USING ROUTER
 app.use("/photos", photoRoutes);
-app.use("/tags", tagRoutes);
 app.use("/contact", contactRoutes);
 app.use("/", userRoutes);
 app.use("/", indexRoutes);

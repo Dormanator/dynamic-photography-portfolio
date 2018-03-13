@@ -38,6 +38,24 @@ router.get("/", (req, res) => {
   });
 });
 
+// Filter - allow for specifc photo groups based on tag
+router.get("/tag/:id", (req, res) => {
+  // if all value is passed, return all entries with a tag key
+  const id = req.params.id === "all" ? { $exists: true } : req.params.id;
+
+  Photo.find({ tag: id }, (err, foundPhotos) => {
+    if (err || !foundPhotos) {
+      req.flash(
+        "error",
+        "Opps, something went wrong with the database query. Please try again."
+      );
+      res.redirect("back");
+    } else {
+      res.render("photos/index", { photos: foundPhotos });
+    }
+  });
+});
+
 // NEW - New photo form
 router.get("/new", middleware.isLoggedIn, (req, res) => {
   res.render("photos/new");
