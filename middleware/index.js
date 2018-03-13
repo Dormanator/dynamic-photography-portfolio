@@ -46,9 +46,9 @@ middleware.uploadImg = (req, res, next) => {
   // so we can show smaller images on smaller screens, respect other's data
   const options = {
     eager: [
-      { width: 260, height: 260, crop: "limit" },
-      { width: 576, height: 650, crop: "limit" },
-      { width: 768, height: 700, crop: "limit" },
+      { width: 260, height: 200, crop: "limit" },
+      { width: 576, height: 476, crop: "limit" },
+      { width: 768, height: 668, crop: "limit" },
       { width: 1000, height: 800, crop: "limit" }
     ]
   };
