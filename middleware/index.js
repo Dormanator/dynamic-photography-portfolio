@@ -47,9 +47,9 @@ middleware.uploadImg = (req, res, next) => {
   const options = {
     eager: [
       { width: 260, height: 260, crop: "limit" },
-      { width: 576, height: 700, crop: "limit" },
-      { width: 768, height: 768, crop: "limit" },
-      { width: 1000, height: 1000, crop: "limit" }
+      { width: 576, height: 650, crop: "limit" },
+      { width: 768, height: 700, crop: "limit" },
+      { width: 1000, height: 800, crop: "limit" }
     ]
   };
   // if an image file was given

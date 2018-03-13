@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #f8f9fa;
+  background: rgb(248, 249, 250);
   color: rgba(0, 0, 0, 0.7);
 }
 
@@ -19,6 +19,11 @@ body {
 
 .navbar-brand {
   letter-spacing: 3px;
+}
+
+.navbar-collapse {
+  background: rgba(248, 249, 250, 0.9);
+  z-index: 100;
 }
 
 .filters a,
@@ -40,7 +45,8 @@ a.return-link {
 }
 
 .thumb-shadow {
-  box-shadow: 0 0.5px 0 0 #ffffff inset, 0 1px 2px 0 #b3b3b3;
+  box-shadow: 0 0.5px 0 0 rgb(255, 255, 255) inset,
+    0 1px 2px 0 rgb(179, 179, 179);
 }
 
 footer {

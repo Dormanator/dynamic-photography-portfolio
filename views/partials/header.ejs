@@ -18,27 +18,34 @@
                     Haley's Photos
                 </a>
                     <% if (currentUser) { %>
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/photos">Photos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/photos/new">Add Photo</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                        <% if (currentUser.isAdmin) { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Admin</a>
-                    </li>
-                        <% } %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Signed In As <%= currentUser.username %></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout">Logout</a>
-                    </li>
-                </ul>
+                <!-- MOBILE BUTTON -->
+                <button class="navbar-toggler mr-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- ELEMENTS -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/photos">Photos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/photos/new">Add Photo</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                            <% if (currentUser.isAdmin) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Admin</a>
+                        </li>
+                            <% } %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Signed In As <%= currentUser.username %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
                     <% } %>
                 <div class="navbar-nav ml-auto">
                     <a class="contact nav-link nav-item" href="/contact">contact me<span class="contact-exclamation">!</span></a>                    
