@@ -10,19 +10,15 @@ body {
 }
 
 .main.container {
-  min-height: calc(100vh - 5rem - 50px);
-}
-
-.navbar + .container {
-  margin-top: 5rem;
+  min-height: calc(100vh - 120px);
 }
 
 .navbar {
   height: 80px;
 }
 
-.navbar-collapse {
-  background: #f8f9fa;
+.navbar-brand {
+  letter-spacing: 3px;
 }
 
 .filters a,
