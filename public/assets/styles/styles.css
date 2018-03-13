@@ -50,3 +50,7 @@ a.return-link {
 footer {
   height: 15px;
 }
+
+.title-spacing {
+  letter-spacing: 5px;
+}
