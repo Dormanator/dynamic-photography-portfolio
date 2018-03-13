@@ -68,11 +68,15 @@ router.post(
   upload.single("image"),
   middleware.uploadImg,
   (req, res) => {
+    // saving the url response from uploading the image via middleware
+    // which is stored in teh request.image object
     req.body.photo.image = req.image;
+    // attach the user id of the uploader to ther image object
     req.body.photo.author = {
       id: req.user._id,
       username: req.user.username
     };
+    // save the image object in the db
     Photo.create(req.body.photo, (err, photo) => {
       if (err) {
         req.flash(
@@ -115,12 +119,11 @@ router.put(
   upload.single("image"),
   middleware.uploadImg,
   (req, res) => {
-    // if a new file was given save the new image object with an updated url
-    // the version number in teh url will change and prevent caching problems
+    // if a new file was given add the new image object to the object to be saved as an update
     if (Boolean(req.file)) {
       req.body.photo.image = req.image;
     }
-    // else just update the db entry
+    // else just update the db entry w/o changing the image
     Photo.findByIdAndUpdate(
       req.params.id,
       req.body.photo,

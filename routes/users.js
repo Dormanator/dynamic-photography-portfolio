@@ -68,6 +68,7 @@ router.post("/forgot", (req, res, next) => {
     [
       done => {
         crypto.randomBytes(20, (err, buf) => {
+          // create the token to allow for password change
           if (err) {
             req.flash(
               "error",
@@ -80,6 +81,7 @@ router.post("/forgot", (req, res, next) => {
         });
       },
       (token, done) => {
+        // make sure the email enter is linked to an account and then set the vars for the token created
         User.findOne({ email: req.body.email.toLowerCase() }, (err, user) => {
           if (!user || err) {
             req.flash("error", "No account with that email address exists.");
@@ -102,6 +104,7 @@ router.post("/forgot", (req, res, next) => {
         });
       },
       (token, user, done) => {
+        // prepare the email with the token link and send it
         const mailOptions = {
           to: user.email,
           from: "ryansnodemailer@gmail.com",
@@ -149,6 +152,7 @@ router.post("/forgot", (req, res, next) => {
 
 // SHOW FORM TO EDIT PASSWORD
 router.get("/reset/:token", (req, res) => {
+  // make sure the info in the reset password link match entries for a user in the db before loading the form
   User.findOne(
     {
       resetPasswordToken: req.params.token,
@@ -169,6 +173,7 @@ router.post("/reset/:token", (req, res) => {
   async.waterfall(
     [
       done => {
+        // make sure user has valid token to make the post
         User.findOne(
           {
             resetPasswordToken: req.params.token,
@@ -182,6 +187,7 @@ router.post("/reset/:token", (req, res) => {
               );
               return res.redirect("back");
             }
+            // make sure the new passwords enter match each other
             if (req.body.password === req.body.confirm) {
               user.setPassword(req.body.password, err => {
                 if (err) {
@@ -191,9 +197,10 @@ router.post("/reset/:token", (req, res) => {
                   );
                   return res.redirect("back");
                 }
+                // if everythign is good we need to invalidate teh password reset token
                 user.resetPasswordToken = undefined;
                 user.resetPasswordExpires = undefined;
-
+                // save the user with the new password and invalidated token
                 user.save(err => {
                   req.logIn(user, err => {
                     if (err) {
@@ -215,6 +222,7 @@ router.post("/reset/:token", (req, res) => {
         );
       },
       (user, done) => {
+        // prepare and send teh user a confirmation email
         const mailOptions = {
           to: user.email,
           from: "ryansnodemailer@gmail.com",
