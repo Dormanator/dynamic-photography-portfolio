@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Haley's Photos</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/styles/styles.css">
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    </head>
+    <body>
+    <!-- NAVBAR -->
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+            <!-- BRAND -->
+                <a class="navbar-brand" href="/">
+                    Haley's Photos
+                </a>
+                <!-- MOBILE BUTTON -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- ELEMENTS -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <% if (currentUser) { %>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/photos">Photos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/photos/new">Add Photo</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+                            <% if (currentUser.isAdmin) { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Admin</a>
+                        </li>
+                            <% } %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Signed In As <%= currentUser.username %></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                        <% } %>
+                    <div class="navbar-nav ml-auto">
+                        <a class="contact nav-link nav-item" href="/contact">contact me<span class="contact-exclamation">!</span></a>                    
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <% if (error && error.length > 0) { %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
+            <% if (success && success.length > 0) { %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+            <% } %>
+        </div>

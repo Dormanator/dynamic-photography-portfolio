@@ -1,0 +1,34 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1><%= photo.title %></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <picture>
+                <source srcset="<%= photo.image.large %>" media="(min-width:992px)">
+                <source srcset="<%= photo.image.medium %>" media="(min-width:768px)">
+                <img srcset="<%= photo.image.small %>" alt="<%= photo.alt %>" class="img-fluid">
+            </picture>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+        <div class="col-8">
+            <a href="/photos" class="return-link">&lsaquo; Go back</a>
+            <div class="float-right">
+                <p><em><%= photo.date.toDateString() %></em></p>
+                <% if (currentUser && photo.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
+                <form class="inline" action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+                <a class="ml-1 btn btn-sm btn-warning" href="/photos/<%= photo._id %>/edit">Edit</a>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

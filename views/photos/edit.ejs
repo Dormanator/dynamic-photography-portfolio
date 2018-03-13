@@ -1,0 +1,43 @@
+<% include ../partials/header %>
+
+<div class='container'>
+
+    <div class="row">
+
+        <div class="col-sm-12 text-center">
+            <h1>Edit <%= photo.title %></h1>
+        </div>
+        
+        <div class="col-md-4 offset-md-4 mt-4">
+            <form action="/photos/<%= photo._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="photo[title]" value="<%= photo.title %>">
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <input class="form-control" id="image" type="file" name="image" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="photo[alt]" value="<%= photo.alt %>">
+                </div>
+                <div class="form-group">
+                <label for="photo-tag">Category</label>
+                    <select class="form-control" name="photo[tag]" id="photo-tag">
+                        <option value="people">People</option>
+                        <option value="places">Places</option>
+                        <option value="things">Things</option>
+                        <option value="animals">Animals</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-large btn-dark btn-block">Update</button>
+                </div>
+            </form>
+            <a href="/photos" class="return-link">&lsaquo; Go back</a>
+        </div>
+
+    </div>
+
+</div>
+
+<% include ../partials/footer %>

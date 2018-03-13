@@ -1,0 +1,35 @@
+<% include ../partials/header %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1>Contact Me</h1>
+        </div>
+
+        <div class="col-md-4 offset-md-4 mt-4">
+            <form action="/contact/send" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="name" placeholder="Enter Name" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="tel" name="phone" placeholder="Your Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" name="message" placeholder="Enter Message Here" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LeA60sUAAAAAISgcMYtrAhkuTJEwLNXRgU_c1rb"></div>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-large btn-dark btn-block">Contact</button>
+                </div>
+            </form>
+            <a href="/photos" class="return-link">&lsaquo; Go back</a>
+            </div>
+        </div>
+</div>
+
+<% include ../partials/footer %>
